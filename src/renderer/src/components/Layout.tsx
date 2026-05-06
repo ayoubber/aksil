@@ -1,13 +1,37 @@
-
 import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar'
 
 export default function Layout() {
   return (
-    <div className="flex h-screen bg-bg overflow-hidden font-sans">
+    <div
+      style={{
+        display: 'flex',
+        height: '100vh',
+        background: 'var(--color-bg)',
+        overflow: 'hidden',
+        fontFamily: 'var(--font-body)'
+      }}
+    >
       <Sidebar />
-      <main className="flex-1 overflow-y-auto">
-        <div className="p-8 page-enter">
+      <main
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          position: 'relative'
+        }}
+      >
+        {/* Subtle top border gradient */}
+        <div
+          style={{
+            position: 'sticky',
+            top: 0,
+            height: 1,
+            background: 'linear-gradient(90deg, transparent, rgba(232,168,48,0.12), transparent)',
+            zIndex: 10,
+            marginBottom: -1
+          }}
+        />
+        <div className="page-enter">
           <Outlet />
         </div>
       </main>
